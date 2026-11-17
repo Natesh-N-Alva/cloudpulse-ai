@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: CloudPulse AI Monitoring Stack
+
+Resources:
+  MonitorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: monitor/
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Environment:
+        Variables:
+          TABLE_NAME: CloudPulse-MonitoringLogs
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: CloudPulse-MonitoringLogs
+      Events:
+        FiveMinutePing:
+          Type: Schedule
+          Properties:
+            Schedule: rate(5 minutes)

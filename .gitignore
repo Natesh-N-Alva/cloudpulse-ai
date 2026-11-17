@@ -1,0 +1,22 @@
+# Python & Virtual Environments
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+
+# Node & React Frontend
+node_modules/
+dist/
+build/
+.env.local
+
+# AWS SAM & Build Artifacts
+.aws-sam/
+samconfig.toml
+
+# IDE & OS Files
+.vscode/
+.DS_Store
+*.log
